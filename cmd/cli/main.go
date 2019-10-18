@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"log"
+	"flag"
 	"os"
 	"time"
 
@@ -22,15 +22,28 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	req := &beers.BeerAddRequest{
-		Name: "ali",
-	}
+	addCmd := flag.NewFlagSet("add", flag.ExitOnError)
+	addCmdName := addCmd.String("name", "", "Beer name")
 
-	resp, err := client.Add(ctx, req)
-	if err != nil {
-		logrus.Errorf("grpc client: %v\n", err)
+	if len(os.Args) < 2 {
+		addCmd.PrintDefaults()
 		os.Exit(1)
 	}
 
-	log.Println(resp)
+	switch os.Args[1] {
+	case "add":
+		addCmd.Parse(os.Args[2:])
+	default:
+		flag.PrintDefaults()
+		os.Exit(1)
+	}
+
+	if addCmd.Parsed() {
+		if *addCmdName == "" {
+			addCmd.PrintDefaults()
+			os.Exit(1)
+		}
+
+		add(ctx, cc, client, addCmdName)
+	}
 }
