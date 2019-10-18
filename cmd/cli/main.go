@@ -3,18 +3,18 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"os"
 	"time"
 
 	"github.com/azbshiri/beers/pkg/grpc/proto/beers"
-	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 )
 
 func main() {
 	cc, err := grpc.Dial(":80", grpc.WithInsecure())
 	if err != nil {
-		logrus.Errorf("grpc client: %v\n", err)
+		fmt.Printf("grpc client: %v\n", err)
 		os.Exit(1)
 	}
 

@@ -5,8 +5,9 @@ import (
 	"net"
 	"os"
 
+	"log"
+
 	"github.com/azbshiri/beers/pkg/grpc"
-	"github.com/prometheus/common/log"
 )
 
 func main() {
