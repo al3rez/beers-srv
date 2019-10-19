@@ -3,22 +3,20 @@ package main
 import (
 	"context"
 	"fmt"
-	"os"
 
-	"github.com/azbshiri/beers/pkg/grpc/proto/beers"
+	pb "github.com/azbshiri/beers/pkg/grpc/proto/beers"
 	"google.golang.org/grpc"
 )
 
-func add(ctx context.Context, cc *grpc.ClientConn, client beers.BeersClient, name *string) {
-	req := &beers.BeerAddRequest{
+func add(ctx context.Context, cc *grpc.ClientConn, client pb.BeersClient, name *string) (*pb.BeerAddResponse, error) {
+	req := &pb.BeerAddRequest{
 		Name: *name,
 	}
 
 	resp, err := client.Add(ctx, req)
 	if err != nil {
-		fmt.Printf("grpc client: %q\n", err)
-		os.Exit(1)
+		return nil, fmt.Errorf("grpc client: %s\n", err)
 	}
 
-	fmt.Printf("added: %v\n", resp)
+	return resp, nil
 }

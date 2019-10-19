@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/azbshiri/beers/pkg/grpc/proto/beers"
+	pb "github.com/azbshiri/beers/pkg/grpc/proto/beers"
 	"google.golang.org/grpc"
 )
 
@@ -18,7 +18,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	client := beers.NewBeersClient(cc)
+	client := pb.NewBeersClient(cc)
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
@@ -44,6 +44,12 @@ func main() {
 			os.Exit(1)
 		}
 
-		add(ctx, cc, client, addCmdName)
+		resp, err := add(ctx, cc, client, addCmdName)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+
+		fmt.Printf("added: %s\n", resp)
 	}
 }
