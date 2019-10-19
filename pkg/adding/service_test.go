@@ -2,33 +2,46 @@ package adding
 
 import (
 	"errors"
+	"reflect"
 	"testing"
 )
 
-type testRepo struct {
-	returnError error
+type dummyRepo struct {
+	err error
 }
 
-func (t *testRepo) AddBeer(u Beer) error {
-	return t.returnError
+func (r *dummyRepo) AddBeer(b Beer) (*Beer, error) {
+	if r.err != nil {
+		return nil, r.err
+	}
+
+	return &b, nil
 }
 
 func TestAddBeer(t *testing.T) {
-	t.Run("test returns error", func(t *testing.T) {
-		s := NewService(&testRepo{returnError: errors.New("bad")})
-		u := Beer{}
-		err := s.AddBeer(u)
-		if err == nil {
-			t.Fatal(err)
-		}
-	})
-
-	t.Run("test adds beer", func(t *testing.T) {
-		s := NewService(&testRepo{})
-		u := Beer{}
-		err := s.AddBeer(u)
-		if err != nil {
-			t.Fatal(err)
-		}
-	})
+	type args struct {
+		b Beer
+	}
+	tests := []struct {
+		name    string
+		s       Service
+		args    args
+		want    *Beer
+		wantErr bool
+	}{
+		{"adds beer", NewService(&dummyRepo{nil}), args{Beer{}}, &Beer{}, false},
+		{"unexpected error", NewService(&dummyRepo{errors.New("pg: cannot connect")}), args{}, nil, true},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := tt.s.AddBeer(tt.args.b)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("service.AddBeer() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("service.AddBeer() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }

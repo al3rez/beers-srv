@@ -14,7 +14,7 @@ func main() {
 	s := grpc.New()
 	listener, err := net.Listen("tcp", fmt.Sprintf(":80"))
 	if err != nil {
-		log.Errorf("failed to listen: %v", err)
+		fmt.Printf("failed to listen: %s\n", err)
 		os.Exit(1)
 	}
 	log.Fatal(s.Serve(listener))
