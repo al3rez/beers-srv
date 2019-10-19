@@ -2,7 +2,7 @@ package grpc
 
 import (
 	"github.com/azbshiri/beers/pkg/adding"
-	"github.com/azbshiri/beers/pkg/grpc/proto/beers"
+	pb "github.com/azbshiri/beers/pkg/grpc/proto/beers"
 	"github.com/azbshiri/beers/pkg/storage/mem"
 	"google.golang.org/grpc"
 )
@@ -15,6 +15,6 @@ func New() *grpc.Server {
 	storage := mem.Storage{}
 	srv := adding.NewService(&storage)
 	s := grpc.NewServer()
-	beers.RegisterBeersServer(s, &server{srv})
+	pb.RegisterBeersServer(s, &server{srv})
 	return s
 }
