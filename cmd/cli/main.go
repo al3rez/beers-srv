@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	pb "github.com/azbshiri/beers/pkg/grpc/proto/beers"
+	pb "github.com/azbshiri/beers/pkg/serializing/protobuf/beers"
 	"google.golang.org/grpc"
 )
 
