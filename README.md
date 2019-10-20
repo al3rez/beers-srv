@@ -16,10 +16,10 @@ Service Objects, Database Layer Abstraction, Repository pattern, CLI interafces 
 decopling behaviors lead to easier testing and shipping new features.
 
 ## Installation
-Installing `beers` is easy, using go get you can install the cmd line app `beers-cli` to interact with gRPC server. First you'll need Google's Protocol Buffers installed.
+Installing `beers-srv` is easy, using go get you can install the cmd line app `beers-cli` to interact with gRPC server. First you'll need Google's Protocol Buffers installed.
 ```
 $ brew install protobuf
-$ go get -u github.com/azbshiri/beers/...
+$ go get -u github.com/azbshiri/beers-srv/...
 ```
 
 
@@ -28,7 +28,7 @@ $ go get -u github.com/azbshiri/beers/...
 I haven't used any external libraries for testing/diffing so if you already have latest version Go installed,
 just simply run `go test -v ./...` :
 ```
-ok      github.com/azbshiri/beers/pkg/adding    (cached)
+ok      github.com/azbshiri/beers-srv/pkg/adding    (cached)
 === RUN   Test_Add
 === RUN   Test_Add/adds_beer
 === RUN   Test_Add/checks_against_blank_name

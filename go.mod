@@ -1,4 +1,4 @@
-module github.com/azbshiri/beers
+module github.com/azbshiri/beers-srv
 
 go 1.13
 
