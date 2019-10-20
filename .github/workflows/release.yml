@@ -1,5 +1,8 @@
-name: Beers
-on: [push, pull_request]
+name: Release
+on:
+  push:
+    branches:
+    - master
 jobs:
 
   build:
@@ -15,18 +18,15 @@ jobs:
 
     - name: Checkout repository
       uses: actions/checkout@v1
-
-    - name: Build
-      run: |
+    - run: |
+        git branch --create-reflog master origin/master
+        git fetch --tags
         go build
-
-    - name: Run tests
-      run: go test -v ./... -race
 
     - name: Release
       uses: goreleaser/goreleaser-action@v1
       with:
         version: latest
-        args: release
+        args: release --rm-dist
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
