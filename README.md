@@ -1,6 +1,5 @@
 # beers
-Enjoy having beers using gRPC and domain-driven design
-
+Enjoy serving 🍻 through micro-services using gRPC
 
 ## Stack
 
