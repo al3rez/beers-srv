@@ -1,8 +1,8 @@
 # beers
-Enjoy having 🍺 using gRPC and domain-driven design
+Enjoy having beers using gRPC and domain-driven design
 
 
-## 📚 Stack
+## Stack
 
 - **CI/CD**: Github Actions (e.g Review, Release automation `goreleaser`, etc)
 - **Testing**: Go `testing` package
@@ -10,12 +10,12 @@ Enjoy having 🍺 using gRPC and domain-driven design
 - **OCI orchestration**: Kubernetes, Docker
 
 
-## ⬢ Architecture
+## Architecture
 Following DDD principles I've separated bounded contextes and behaviors (e.g. adding, removing, serializing, grpc) into multiple packages using
 Service Objects, Database Layer Abstraction, Repository pattern, CLI interafces so that
 decopling behaviors lead to easier testing and shipping new features.
 
-## 🔧 Installation
+## Installation
 Installing `beers` is easy, using go get you can install the cmd line app `beers-cli` to interact with gRPC server. First you'll need Google's Protocol Buffers installed.
 ```
 $ brew install protobuf
@@ -24,7 +24,7 @@ $ go get -u github.com/azbshiri/beers/...
 
 
 
-## ✅ Testing
+## Testing
 I haven't used any external libraries for testing/diffing so if you already have latest version Go installed,
 just simply run `go test -v ./...` :
 ```
