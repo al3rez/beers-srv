@@ -29,7 +29,7 @@ func TestAddBeer(t *testing.T) {
 		want    *Beer
 		wantErr bool
 	}{
-		{"adds beer", NewService(&dummyRepo{nil}), args{Beer{}}, &Beer{}, false},
+		{"adds beer", NewService(&dummyRepo{nil}), args{Beer{Id: 0}}, &Beer{Id: 0}, false},
 		{"unexpected error", NewService(&dummyRepo{errors.New("pg: cannot connect")}), args{}, nil, true},
 	}
 	for _, tt := range tests {
