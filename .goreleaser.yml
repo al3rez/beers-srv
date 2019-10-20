@@ -1,0 +1,28 @@
+builds:
+  - id: client
+    binary: beers-cli
+    main: ./cmd/cli/
+    goos: [freebsd, windows, linux, darwin]
+    goarch: [amd64, arm, arm64]
+    goarm: [6, 7]
+    ignore:
+      - { goos: darwin, goarch: 386 }
+      - { goos: linux, goarch: arm, goarm: 7 }
+
+  - id: server
+    binary: beers-server
+    main: ./cmd/server/
+    goos: [freebsd, windows, linux, darwin]
+    goarch: [amd64, arm, arm64]
+    goarm: [6, 7]
+    ignore:
+      - { goos: darwin, goarch: 386 }
+      - { goos: linux, goarch: arm, goarm: 7 }
+
+archives:
+  - id: client
+    builds: [client]
+    format: binary
+  - id: server
+    builds: [server]
+    format: binary
