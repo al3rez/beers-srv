@@ -1,5 +1,5 @@
 name: Beers
-on: [pull_request]
+on: [push, pull_request]
 jobs:
 
   build:
@@ -28,3 +28,5 @@ jobs:
       with:
         version: latest
         args: release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
