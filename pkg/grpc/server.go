@@ -2,7 +2,7 @@ package grpc
 
 import (
 	"github.com/azbshiri/beers/pkg/adding"
-	pb "github.com/azbshiri/beers/pkg/serializing/protobuf/beers"
+	"github.com/azbshiri/beers-proto/pkg/pb"
 	"github.com/azbshiri/beers/pkg/storage/mem"
 	"google.golang.org/grpc"
 )

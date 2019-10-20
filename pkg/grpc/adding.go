@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/azbshiri/beers/pkg/adding"
-	pb "github.com/azbshiri/beers/pkg/serializing/protobuf/beers"
+	"github.com/azbshiri/beers-proto/pkg/pb"
 )
 
 func (srv *server) Add(ctx context.Context, r *pb.BeerAddRequest) (*pb.BeerAddResponse, error) {
