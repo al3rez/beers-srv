@@ -1,6 +1,8 @@
 # beers
-Enjoy serving 🍻 through micro-services using gRPC
-[![asciicast](https://asciinema.org/a/PvdZwgpwX5rv4vyJ6cd91s9Qh.svg)](https://asciinema.org/a/PvdZwgpwX5rv4vyJ6cd91s9Qh)
+Enjoy serving 🍻 through micro-services using gRPC  
+<br>
+<br>
+[![asciicast](https://asciinema.org/a/XXLhQTinGqJdn7F5YR00Rp171.svg)](https://asciinema.org/a/XXLhQTinGqJdn7F5YR00Rp171)
 ## Stack
 
 - **CI/CD**: Github Actions (e.g Review, Release automation `goreleaser`, etc)
