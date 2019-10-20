@@ -4,6 +4,12 @@ github.com/azbshiri/beers-proto v0.0.0-20191020113029-86945206e34a h1:Jcl3CRU96s
 github.com/azbshiri/beers-proto v0.0.0-20191020113029-86945206e34a/go.mod h1:t/gbX8dE9K5xoZZd9dIhuFsEJ/nUfgNISAYCYEj96kQ=
 github.com/azbshiri/beers-proto v0.0.0-20191020121659-80e92a5b1d7b h1:1KNih+kckPiKHV5IXjk620Ht1wI6mUpgCP8rTSlhL7A=
 github.com/azbshiri/beers-proto v0.0.0-20191020121659-80e92a5b1d7b/go.mod h1:t/gbX8dE9K5xoZZd9dIhuFsEJ/nUfgNISAYCYEj96kQ=
+github.com/azbshiri/beers-proto v0.0.0-20191020171917-b752cf885ad3 h1:NCCsrAL8jq8qmi3RrhAthRozMF8Q9HVVjm/+6HtKUIU=
+github.com/azbshiri/beers-proto v0.0.0-20191020171917-b752cf885ad3/go.mod h1:t/gbX8dE9K5xoZZd9dIhuFsEJ/nUfgNISAYCYEj96kQ=
+github.com/azbshiri/beers-proto v0.0.0-20191020172300-ed8c41f8921e h1:ybaRCNL8/RL59gM6vySRQ1RcRJ5uUtwjCqSJzXiEUKs=
+github.com/azbshiri/beers-proto v0.0.0-20191020172300-ed8c41f8921e/go.mod h1:t/gbX8dE9K5xoZZd9dIhuFsEJ/nUfgNISAYCYEj96kQ=
+github.com/azbshiri/beers-proto v0.0.0-20191020185715-62c1886be637 h1:f/HCe/Yc0t06rb3onacYUB6RAaJXODC2wJrhouMM0N4=
+github.com/azbshiri/beers-proto v0.0.0-20191020185715-62c1886be637/go.mod h1:6LG/hglKLgUqZd//oWKyl5ZGM13N4/n/j3FkGh4u7lo=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
 github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b h1:VKtxabqXZkF25pY9ekfRL6a582T4P37/31XEstQ5p58=
 github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b/go.mod h1:SBH7ygxi8pfUlaOkMMuAQtPIUF8ecWP5IEl/CR7VP2Q=

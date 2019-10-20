@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/azbshiri/beers-proto/pkg/pb"
-	"github.com/azbshiri/beers/pkg/adding"
+	"github.com/azbshiri/beers-srv/pkg/adding"
 )
 
 func (srv *server) Add(ctx context.Context, r *pb.BeerAddRequest) (*pb.BeerAddResponse, error) {

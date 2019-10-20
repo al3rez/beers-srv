@@ -2,9 +2,10 @@ package grpc
 
 import (
 	"github.com/azbshiri/beers-proto/pkg/pb"
-	"github.com/azbshiri/beers/pkg/adding"
-	"github.com/azbshiri/beers/pkg/removing"
-	"github.com/azbshiri/beers/pkg/storage/mem"
+	v1 "github.com/azbshiri/beers-proto/pkg/pb/grpc_health_v1"
+	"github.com/azbshiri/beers-srv/pkg/adding"
+	"github.com/azbshiri/beers-srv/pkg/removing"
+	"github.com/azbshiri/beers-srv/pkg/storage/mem"
 	"google.golang.org/grpc"
 )
 
@@ -18,6 +19,8 @@ func New() *grpc.Server {
 	addr := adding.NewService(&storage)
 	rmvr := removing.NewService(&storage)
 	s := grpc.NewServer()
-	pb.RegisterBeersServer(s, &server{addr, rmvr})
+	srv := &server{addr, rmvr}
+	pb.RegisterBeersServer(s, srv)
+	v1.RegisterHealthServer(s, srv)
 	return s
 }

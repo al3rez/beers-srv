@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/azbshiri/beers-proto/pkg/pb"
-	"github.com/azbshiri/beers/pkg/removing"
+	"github.com/azbshiri/beers-srv/pkg/removing"
 )
 
 func (r *dummyRepo) RemoveBeer(b removing.Beer) (*removing.Beer, error) {

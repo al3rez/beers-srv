@@ -3,8 +3,8 @@ package mem
 import (
 	"fmt"
 
-	"github.com/azbshiri/beers/pkg/adding"
-	"github.com/azbshiri/beers/pkg/removing"
+	"github.com/azbshiri/beers-srv/pkg/adding"
+	"github.com/azbshiri/beers-srv/pkg/removing"
 )
 
 // Memory storage keeps data in memory
