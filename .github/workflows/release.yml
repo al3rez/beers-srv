@@ -1,5 +1,8 @@
-name: Beers
-on: [push, pull_request]
+name: Release
+on:
+  push:
+    branches:
+    - master
 jobs:
 
   build:
@@ -16,14 +19,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v1
     - run: |
+        git branch --create-reflog master origin/master
         git fetch --tags
-
-    - name: Build
-      run: |
         go build
-
-    - name: Run tests
-      run: go test -v ./... -race
 
     - name: Release
       uses: goreleaser/goreleaser-action@v1
