@@ -2,10 +2,9 @@ package grpc
 
 import (
 	"context"
-	"fmt"
 
-	"github.com/azbshiri/beers/pkg/adding"
 	"github.com/azbshiri/beers-proto/pkg/pb"
+	"github.com/azbshiri/beers/pkg/adding"
 )
 
 func (srv *server) Add(ctx context.Context, r *pb.BeerAddRequest) (*pb.BeerAddResponse, error) {
@@ -14,7 +13,7 @@ func (srv *server) Add(ctx context.Context, r *pb.BeerAddRequest) (*pb.BeerAddRe
 		return &pb.BeerAddResponse{
 			Status: pb.Status_BAD,
 			ErrMsg: "name cannot be blank",
-		}, fmt.Errorf("grpc add: name cannot be blank\n")
+		}, nil
 	}
 
 	beer, err := srv.adder.AddBeer(adding.Beer{Name: name})
@@ -22,7 +21,7 @@ func (srv *server) Add(ctx context.Context, r *pb.BeerAddRequest) (*pb.BeerAddRe
 		return &pb.BeerAddResponse{
 			Status: pb.Status_BAD,
 			ErrMsg: err.Error(),
-		}, fmt.Errorf("service add: %s\n", err)
+		}, nil
 	}
 
 	return &pb.BeerAddResponse{

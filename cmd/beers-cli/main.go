@@ -11,8 +11,17 @@ import (
 	"google.golang.org/grpc"
 )
 
+func getEnv(key, fallback string) string {
+	if val, ok := os.LookupEnv(key); ok {
+		return val
+	}
+
+	return fallback
+}
+
 func main() {
-	cc, err := grpc.Dial(":80", grpc.WithInsecure())
+	port := fmt.Sprintf(":%s", getEnv("PORT", "8000"))
+	cc, err := grpc.Dial(port, grpc.WithInsecure())
 	if err != nil {
 		fmt.Printf("grpc client: %v\n", err)
 		os.Exit(1)
@@ -25,6 +34,9 @@ func main() {
 	addCmd := flag.NewFlagSet("add", flag.ExitOnError)
 	addCmdName := addCmd.String("name", "", "Beer name")
 
+	removeCmd := flag.NewFlagSet("remove", flag.ExitOnError)
+	removeCmdId := removeCmd.Int("id", -1, "Beer id")
+
 	if len(os.Args) < 2 {
 		addCmd.PrintDefaults()
 		os.Exit(1)
@@ -33,8 +45,11 @@ func main() {
 	switch os.Args[1] {
 	case "add":
 		addCmd.Parse(os.Args[2:])
+	case "remove":
+		removeCmd.Parse(os.Args[2:])
 	default:
-		flag.PrintDefaults()
+		addCmd.PrintDefaults()
+		removeCmd.PrintDefaults()
 		os.Exit(1)
 	}
 
@@ -51,5 +66,18 @@ func main() {
 		}
 
 		fmt.Printf("added: %s\n", resp)
+	} else if removeCmd.Parsed() {
+		if *removeCmdId < 0 {
+			removeCmd.PrintDefaults()
+			os.Exit(1)
+		}
+
+		resp, err := remove(ctx, cc, client, removeCmdId)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+
+		fmt.Printf("removed: %s\n", resp)
 	}
 }
