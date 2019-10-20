@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/azbshiri/beers/pkg/adding"
-	pb "github.com/azbshiri/beers/pkg/serializing/protobuf/beers"
+	"github.com/azbshiri/beers-proto/pkg/pb"
 )
 
 type dummyRepo struct {
