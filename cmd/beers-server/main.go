@@ -7,7 +7,7 @@ import (
 
 	"log"
 
-	"github.com/azbshiri/beers/pkg/grpc"
+	"github.com/azbshiri/beers-srv/pkg/grpc"
 )
 
 func getEnv(key, fallback string) string {
