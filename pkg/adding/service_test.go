@@ -1,7 +1,6 @@
 package adding
 
 import (
-	"errors"
 	"reflect"
 	"testing"
 )
@@ -30,7 +29,7 @@ func TestAddBeer(t *testing.T) {
 		wantErr bool
 	}{
 		{"adds beer", NewService(&dummyRepo{nil}), args{Beer{}}, &Beer{}, false},
-		{"unexpected error", NewService(&dummyRepo{errors.New("pg: cannot connect")}), args{}, nil, true},
+		{"unexpected error", NewService(&dummyRepo{nil}), args{}, nil, true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
