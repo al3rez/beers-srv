@@ -19,6 +19,13 @@ func getEnv(key, fallback string) string {
 	return fallback
 }
 
+func printDefaults(cmds ...*flag.FlagSet) {
+	for _, cmd := range cmds {
+		fmt.Fprintf(cmd.Output(), "Usage of %s:\n", cmd.Name())
+		cmd.PrintDefaults()
+	}
+}
+
 func main() {
 	port := fmt.Sprintf(":%s", getEnv("PORT", "8000"))
 	cc, err := grpc.Dial(port, grpc.WithInsecure())
@@ -38,7 +45,7 @@ func main() {
 	removeCmdId := removeCmd.Int("id", -1, "Beer id")
 
 	if len(os.Args) < 2 {
-		addCmd.PrintDefaults()
+		printDefaults(addCmd, removeCmd)
 		os.Exit(1)
 	}
 
@@ -48,8 +55,7 @@ func main() {
 	case "remove":
 		removeCmd.Parse(os.Args[2:])
 	default:
-		addCmd.PrintDefaults()
-		removeCmd.PrintDefaults()
+		printDefaults(addCmd, removeCmd)
 		os.Exit(1)
 	}
 
@@ -68,7 +74,7 @@ func main() {
 		fmt.Printf("added: %s\n", resp)
 	} else if removeCmd.Parsed() {
 		if *removeCmdId < 0 {
-			removeCmd.PrintDefaults()
+			printDefaults(removeCmd)
 			os.Exit(1)
 		}
 
