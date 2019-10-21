@@ -23,6 +23,22 @@ $ brew install protobuf
 $ go get -u github.com/azbshiri/beers-srv/...
 ```
 
+### Docker
+If you have Docker already installed then you don't need Go or Protocol Buffers you just need to run below command:
+
+```
+$ docker build -t beers-srv:0.1.0 .
+Sending build context to Docker daemon  360.4kB
+Step 1/11 : FROM golang:1.13-alpine as builder
+ ---> 4acab7f5278b
+Step 2/11 : COPY . /go/src/github.com/azbshiri/beers
+...
+
+$ docker run -d --rm --name=beers-srv beers-srv:0.1.0
+$ docker exec -i beers-srv grpc-health-probe -addr=:8000
+status: SERVING
+
+```
 
 
 ## Testing
