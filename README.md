@@ -92,7 +92,7 @@ etc
 
 
 ## Cloud naviteness
-
+Using Kubernetes and Docker you can easily run this applicaiton on cloud with ease scaling up/down, add database integeration and etc.
 
 ## The Twelve-Factor App
 
@@ -152,3 +152,14 @@ Unfortunately I haven't had time to make this consitent but I guess in some case
 Run admin/management tasks as one-off processes
 
 When run using Docker it's simple as running `docker exec` to do admin tasks also when developing using `beers-cli` and `grpc-health-probe` to make sure everything is working fine.
+
+
+## Things that are missed 
+
+- [ ] Move protocol buffers generation/linting to Github actions
+- [ ] Fix GoReleaser on Github actions (checkout action doesn't sync tags)
+- [ ] Do dependency injection for logging and make it consistent
+- [ ] More human-friendly errors when dealing with 
+- [ ] Add GCP/AWS integration using Terraform
+- [ ] Manage protocol buffers using [buf](https://buf.build/docs/introduction?ref=producthunt) or [gunk](https://github.com/gunk/gunk)
+- [ ] Service discovery using etcd, consul or etc
