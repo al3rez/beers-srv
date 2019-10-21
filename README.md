@@ -80,3 +80,7 @@ status: SERVING
 ```
 
 kaboom!
+
+
+## Event sorucing
+I'd go with Google Pub/Sub API to keep track of events on cluster in an event store and https://watermill.io/ API to make it easier to deal with events/subscribers.
