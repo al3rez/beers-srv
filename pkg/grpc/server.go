@@ -1,6 +1,7 @@
 package grpc
 
 import (
+	"github.com/afex/hystrix-go/hystrix"
 	"github.com/azbshiri/beers-proto/pkg/pb"
 	v1 "github.com/azbshiri/beers-proto/pkg/pb/grpc_health_v1"
 	"github.com/azbshiri/beers-srv/pkg/adding"
@@ -15,6 +16,11 @@ type server struct {
 }
 
 func New() *grpc.Server {
+	hystrix.ConfigureCommand("beers", hystrix.CommandConfig{
+		SleepWindow:            5000,
+		RequestVolumeThreshold: 10,
+	})
+
 	storage := mem.Storage{}
 	addr := adding.NewService(&storage)
 	rmvr := removing.NewService(&storage)

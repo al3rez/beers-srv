@@ -163,5 +163,5 @@ When run using Docker it's simple as running `docker exec` to do admin tasks als
 - [ ] Add GCP/AWS integration using Terraform
 - [ ] Manage protocol buffers using [buf](https://buf.build/docs/introduction?ref=producthunt) or [gunk](https://github.com/gunk/gunk)
 - [ ] Service discovery using etcd, consul or etc
-- [ ] Implement fault-tolerant mechanisms https://github.com/afex/hystrix-go 
+- [x] Implement fault-tolerant mechanisms https://github.com/afex/hystrix-go 
 - [ ] Move data storage to a stateful service 
